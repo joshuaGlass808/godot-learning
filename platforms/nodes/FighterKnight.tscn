@@ -236,9 +236,9 @@ position = Vector2( 3.83211, 2.87356 )
 scale = Vector2( 1.09307, 1.30172 )
 frames = SubResource( 5 )
 animation = "idle"
-frame = 4
+frame = 8
 playing = true
 
-[connection signal="body_entered" from="Area2D" to="Area2D/KinematicBody2D" method="_on_Area2D_body_entered"]
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_Area2D_body_entered"]
+[connection signal="body_entered" from="Area2D" to="Area2D/KinematicBody2D" method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="Area2D" to="Area2D" method="_on_Area2D_body_exited"]

@@ -25,7 +25,7 @@ func handle_inputs(delta: float) -> void:
 
 	else:
 		velocity.x = 0
-		if is_on_wall() and (!Input.is_action_just_pressed("attack") or !Input.is_action_just_released("attack")):
+		if !Input.is_action_pressed("attack") and is_on_wall():
 			$AnimatedSprite.animation = "idle"
 		
 	if Input.is_action_just_pressed("jump"):
@@ -34,10 +34,10 @@ func handle_inputs(delta: float) -> void:
 			
 		jump_count += 1
 		velocity.y = -(250)
-		$AnimatedSprite.animation = "jump"
+		if !Input.is_action_pressed("attack"):
+			$AnimatedSprite.animation = "jump"
 		
 	if Input.is_action_pressed("attack"):
-		#$AnimatedSprite.animation = "attack"
 		$AnimatedSprite.play("attack")
 
 func _physics_process(delta: float) -> void:
@@ -47,7 +47,7 @@ func _physics_process(delta: float) -> void:
 
 	if is_on_wall():
 		jump_count = 0
-	else:
+	elif !Input.is_action_pressed("attack"):
 		$AnimatedSprite.animation = "jump"
 		
 	handle_inputs(delta)
